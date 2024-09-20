@@ -13,6 +13,7 @@ keymap.set("n", "dw", 'vb"_d')
 
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
+keymap.set({ "s", "i", "n", "v" }, "<C-s>", "<esc>:w<cr>", { desc = "Exit insert mode and save changes." })
 
 -- Save with root permission (not working for now)
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
@@ -24,10 +25,10 @@ keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 -- Jumplist
 keymap.set("n", "<C-m>", "<C-i>", opts)
 
--- New tab
+-- Buffers
 keymap.set("n", "te", ":tabedit")
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+keymap.set("n", "<tab>", ":bnext<Return>", opts)
+keymap.set("n", "<s-tab>", ":bprev<Return>", opts)
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
@@ -48,14 +49,6 @@ keymap.set("n", "<C-j>", function()
   vim.diagnostic.goto_next()
 end, opts)
 
-keymap.set("n", "<leader>r", function()
-  require("craftzdog.hsl").replaceHexWithHSL()
-end)
-
-keymap.set("n", "<leader>i", function()
-  require("craftzdog.lsp").toggleInlayHints()
-end)
-
 keymap.set("n", ";", ":", { desc = "CMD enter command mode" })
 keymap.set("i", "jk", "<ESC>")
 keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>")
@@ -63,5 +56,7 @@ keymap.set("n", "C-l", "<cmd> TmuxNavigateRight<CR>")
 keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>")
 keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUpt<CR>")
 keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
--- map for GitHub Copilot Accept "<C-l"
-keymap.set("i", "<tab>", "<cmd> call feedkeys(vim.fn['copilot#Accept'](), '')<CR>", { noremap = true, silent = true })
+-- map for GitHub Copilot Accept "<C-g>"
+keymap.set("i", "<C-j>", "copilot#Next()", { expr = true, silient = true })
+keymap.set("i", "<C-k>", "copilot#Previous()", { expr = true, silient = true })
+keymap.set("i", "<C-l>", "copilot#Accept()", { expr = true, silent = true })
