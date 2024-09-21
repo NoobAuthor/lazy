@@ -4,7 +4,7 @@ return {
     name = "catppuccin",
     priority = 1000,
     require("catppuccin").setup({
-      flavour = "latte", -- latte, frappe, macchiato, mocha
+      flavour = "mocha", -- latte, frappe, macchiato, mocha
       background = { -- :h background
         light = "latte",
         dark = "mocha",
@@ -54,5 +54,9 @@ return {
     config = function()
       vim.cmd.colorscheme("catppuccin")
     end,
+  },
+  {
+    "LazyVim/LazyVim",
+    opts = { colorscheme = "catppuccin-mocha" },
   },
 }
