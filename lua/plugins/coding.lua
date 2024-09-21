@@ -94,8 +94,4 @@ return {
       table.insert(opts.sources, { name = "emoji" })
     end,
   },
-  {
-    "github/copilot.vim",
-    lazy = false,
-  },
 }

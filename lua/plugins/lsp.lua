@@ -24,6 +24,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      diagnostics = {
+        float = { border = "rounded" },
+      },
       inlay_hints = { enabled = false },
       ---@type lspconfig.options
       servers = {

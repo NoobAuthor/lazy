@@ -29,9 +29,11 @@ keymap.set("n", "<C-m>", "<C-i>", opts)
 keymap.set("n", "te", ":tabedit")
 keymap.set("n", "<tab>", ":bnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":bprev<Return>", opts)
+
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
+
 -- Move window
 keymap.set("n", "sh", "<C-w>h")
 keymap.set("n", "sk", "<C-w>k")
@@ -55,8 +57,5 @@ keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>")
 keymap.set("n", "C-l", "<cmd> TmuxNavigateRight<CR>")
 keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>")
 keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUpt<CR>")
+
 keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
--- map for GitHub Copilot Accept "<C-g>"
-keymap.set("i", "<C-j>", "copilot#Next()", { expr = true, silient = true })
-keymap.set("i", "<C-k>", "copilot#Previous()", { expr = true, silient = true })
-keymap.set("i", "<C-l>", "copilot#Accept()", { expr = true, silent = true })
